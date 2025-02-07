@@ -1,12 +1,6 @@
 # Role-Based Access Control (RBAC) system
 
-## Postman Collection Link
-1. Create users : 18.246.227.19:5000/users/register
-2. Retrieve user lists : 18.246.227.19:5000/users
-3. Assign predefined roles (staff, supervisor, admin) to users : 18.246.227.19:5000/users/assign_role/2
-4. Retrieve the list of roles : 18.246.227.19:5000/roles
-5. Dynamically assign permissions to these roles. Only Admin should have the ability to assign permissions : 18.246.227.19:5000/permissions
-6. List all available permissions : 18.246.227.19:5000/permission_per_role
+## [Postman Collection Link](https://www.postman.com/gauravchopracg/workspace/development/collection/6438205-deeac2e3-9701-414b-8e0f-d977edeec13c?action=share&creator=6438205)
 
 ## Setup Instructions
 **The following commands has been reproduced on aws ec2 instance Ubuntu 24.04.1 LTS**
@@ -48,9 +42,9 @@ gunicorn -b 0.0.0.0:5000 -w 4 crbac:app
 
 7. Create a configuration file in /etc/supervisor/conf.d.
 ```
-[program:microblog]
-command=/home/ubuntu/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
-directory=/home/ubuntu/microblog
+[program:custom_role_based_access_control_system]
+command=/home/ubuntu/custom_role_based_access_control_system/venv/bin/gunicorn -b 0.0.0.0:5000 -w 4 crbac:app
+directory=/home/ubuntu/custom_role_based_access_control_system
 user=ubuntu
 autostart=true
 autorestart=true
